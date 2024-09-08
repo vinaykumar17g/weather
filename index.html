@@ -10,10 +10,22 @@
         {
             justify-content: center;
             background-color: black;
+            color:white;
+        }
+        @keyframes vinay
+        {
+            from
+            {
+                transform: rotate(0deg);
+            }
+            to
+            {
+                transform: rotate(360deg);
+            }
         }
         @media (max-width:600px)
         {
-            .container
+            #container
             {
             background:black;
             color:white;
@@ -23,7 +35,7 @@
         }
         @media (min-width:600px)
         {
-            .container
+            #container
             {
             background:black;
             color:white;
@@ -80,10 +92,40 @@
             background-clip: text;
             font-size:20px;
         }
+        #loader
+        {   
+            margin-top:250px;
+            height: 100px;
+            width: 100px;
+            border:10px green solid;
+            border-radius: 50%;
+            animation: vinay;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            border-top-color: blue;
+            border-left-color:black;
+            border-right-color:black;
+            border-bottom-color: greenyellow;
+        }
+        .hide
+        {
+            display:none;
+        }
+        .owner1
+        {
+            background:linear-gradient(to right,red,blue);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip:text;
+        }
     </style>
 </head>
 <body>
-    <center><div class="container"><h1 >Weather App</h1><hr>
+    <center class="loader"><div id="loader"></div><br>
+        <h1>Loading ... </h1>
+        <h1 class="owner1">Created By Vinay Kumar ❤️</h1></center>
+    <center><div id="container" class="hide"><h1 >Weather App</h1><hr>
 
         <div style="width:100%;height:300px;">
             <div class="input">
@@ -109,6 +151,15 @@
         //document.querySelector(".container").style.display="none";
         //if(navigator.onLine)
         //{
+            let div=document.querySelector("#container");
+        let loader=document.querySelector(".loader");
+        window.addEventListener('load',()=>
+        {
+            setInterval(()=>
+            {
+                loader.style.display="none";
+                div.classList.remove('hide');
+            },2000)});
             let city=document.getElementById("text")
             let h2=document.querySelector("h2")
             let Temp=document.querySelector(".temp")
