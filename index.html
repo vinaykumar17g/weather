@@ -117,6 +117,7 @@
             let Wind=document.querySelector(".wind")
             let Weather=document.querySelector(".weather")
             let submit=document.querySelector("#submit");
+            let image=document.querySelector("img");
             submit.addEventListener("click",()=>
             {
                 checkweather();      
@@ -134,6 +135,18 @@
                 Humidity.innerText=data.main.humidity;
                 Wind.innerText=Math.round(data.wind.speed)+"km/h";
                 Weather.innerText=data.weather[0].main;
+                if(data.weather[0].main=="Clear")
+                {
+                    image.src="clear.png";
+                }
+                else if(data.weather[0].main=="Rain")
+                {
+                    image.src="Rain.png";
+                }
+                else
+                {
+                    image.src="clouds.png";
+                }
             }
         /*}
         else
