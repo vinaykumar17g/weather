@@ -89,7 +89,8 @@
             <div class="input">
                 <input type="text" id="text" placeholder="Enter city name">
                 <input type="submit" id="submit"></div><br><br><br>
-    <img src="q.png" height="60px;">
+    <img src="clear.png" height="60px;">
+    <h3 class="weather">Clear</h3>
     <h1 class="temp">22°C</h1>
     <h2 class="city">NEWYORK</h2>
         </div>
@@ -131,7 +132,8 @@
                 Temp.innerText=Math.round(data.main.temp)+"°C";
                 City.innerText=data.name.toUpperCase();
                 Humidity.innerText=data.main.humidity;
-                Wind.innerText=Math.round(data.wind.speed)+"km/h"
+                Wind.innerText=Math.round(data.wind.speed)+"km/h";
+                Weather.innerText=data.weather[0].main;
             }
         /*}
         else
