@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/df95116d29.js" crossorigin="anonymous"></script>
+    <style>
+        body
+        {
+            justify-content: center;
+            background-color: black;
+        }
+        @media (max-width:600px)
+        {
+            .container
+            {
+            background:black;
+            color:white;
+            width:80%;
+            height: 650px;
+            }
+        }
+        @media (min-width:600px)
+        {
+            .container
+            {
+            background:black;
+            color:white;
+            width:25%;
+            height: 650px;
+            }
+        }
+        input
+        {
+            background-color: transparent;
+            border:none;
+        }
+        input[type="text"]
+        {
+            outline: none;
+            height:25px;
+            width:70%;           
+        }
+        input[type=submit]
+        {
+            height:25px;
+            width:20%;
+            border:none;
+        }
+        .contain2
+        {
+            display:flex;
+        }
+        .box1
+        {
+            width:50%;
+            height:100%;
+        }
+        .box2
+        {
+            width:50%;
+            height:100%;
+        }
+        .input
+        {
+            margin-top:20px;
+            width:90%;
+            border-radius: 20px;
+            background-color: white;
+        }
+        p
+        {
+            margin-top:170px;
+        }
+        .owner
+        {
+            color: transparent;
+            background: linear-gradient(to right,red,blue);
+            background-clip: text;
+        }
+    </style>
+</head>
+<body>
+    <center><div class="container"><h1 >Weather App</h1><hr>
+
+        <div style="width:100%;height:300px;">
+            <div class="input">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="text" placeholder="Enter city name">
+                <input type="submit" id="submit"></div><br><br><br>
+    <img src="q.png" height="60px;">
+    <h1 class="temp">22°C</h1>
+    <h2 class="city">NEWYORK</h2>
+        </div>
+    <div style="width:100%;height:250px;" class="contain2">
+        <div class="box1">
+            <P class="humidity">50 g/kg</P>
+            <h3>HUMIDITY</h3>
+        </div>
+        <div class="box2">
+            <P class="wind">100 km/h</P>
+            <h3>WIND</h3></div>
+    </div>
+    <h2 class="owner">Created By Vinay Kumar ❤️</h2>
+    </div></center>
+    <script>
+        //document.querySelector(".container").style.display="none";
+        //if(navigator.onLine)
+        //{
+            let city=document.getElementById("text")
+            let h2=document.querySelector("h2")
+            let Temp=document.querySelector(".temp")
+            let City=document.querySelector(".city")
+            let Humidity=document.querySelector(".humidity")
+            let Wind=document.querySelector(".wind")
+            let Weather=document.querySelector(".weather")
+            let submit=document.querySelector("#submit");
+            submit.addEventListener("click",()=>
+            {
+                checkweather();      
+            })
+            let apiurl="https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
+            let apikey="e0e884b82ced4f49351ca81425d69417";
+
+            async function checkweather()
+            {
+                let result=await fetch(apiurl+city.value+`&appid=${apikey}`);
+                let data=await result.json();
+                console.log(data);
+                Temp.innerText=Math.round(data.main.temp)+"°C";
+                City.innerText=data.name.toUpperCase();
+                Humidity.innerText=data.main.humidity;
+                Wind.innerText=Math.round(data.wind.speed)+"km/h"
+            }
+        /*}
+        else
+        {
+            alert("Please Enable your Internet");
+            document.querySelector(".container").style.display="none";
+        }*/
+    </script>
+</body>
+</html>
